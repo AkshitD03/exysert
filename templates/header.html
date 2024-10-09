@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exyser Search</title>
+</head>
+<body>
+    <style>
+        .header{
+          display: flex;
+      flex-direction: column;
+      -webkit-box-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      align-items: center;
+      margin: auto;
+      width: 100%;
+      padding: 8px;
+        }
+        /* .search-bar {
+          margin-left: 400px;
+        }*/
+        .tab {
+          margin-left: 00px;
+        } 
+        .speak-button-res {
+          height: 52px;
+        }
+        .logo img{
+          margin-left: -330px
+        }
+        @media (max-width: 480px) {
+        .logo img {
+    margin-left: -90px;
+        }
+    }
+    
+      </style>
+        <form action="/" method="post">
+          <div class="header">
+        <div class="search-bar">
+            <div class="logo">
+                <a href="/"><img src="{{ url_for('static', filename='favicon.png') }}" alt="e"></a>
+                </div>
+            <input type="text" value="{{ original_query }}" id="search_query" name="search_query">
+            <!-- <h1>{{ original_query }}</h1> -->
+            <!-- <script>
+              document.getElementById('search_query').addEventListener('blur', decodeURL);
+      
+              function decodeURL() {
+                  const encodedInput = document.getElementById('search_query').value;
+                  const decodedOutput = decodeURIComponent(encodedInput);
+                  document.getElementById('search_query').value = decodedOutput;
+              }
+      
+              // Decode on page load if the input is pre-filled
+              window.onload = function() {
+                  decodeURL();
+              };
+          </script> -->
+            <button type="submit" class="search-button"><svg width="25px" height="25px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs>
+                  <path id="search-a" d="M11.7099609,0.572509766 C9.46940104,1.29012044 7.99951172,3.05419922 7.30029297,5.86474609 C6.25146484,10.0805664 4.95166016,10.6181641 0.719970703,9.11865234 C2.23974609,11.9257813 5.32006836,13.0512695 7.30029297,13.0512695 C9.28051758,13.0512695 14.4091797,10.2941895 13.8215332,5.0534668 C13.3114421,3.52709961 12.6075846,2.03344727 11.7099609,0.572509766 Z"/>
+                  <path id="search-c" d="M14.1791377,12.7701494 L19.7100661,18.3101411 C20.0966446,18.6967197 20.0966446,19.3234875 19.7100661,19.7100661 C19.3234875,20.0966446 18.6967197,20.0966446 18.3101411,19.7100661 L12.7803471,14.1712106 C11.4385246,15.2160226 9.75152329,15.8383427 7.91917136,15.8383427 C3.54553379,15.8383427 0,12.2928089 0,7.91917136 C0,3.54553379 3.54553379,0 7.91917136,0 C12.2928089,0 15.8383427,3.54553379 15.8383427,7.91917136 C15.8383427,9.74688445 15.2191696,11.4299819 14.1791377,12.7701494 Z M7.91917136,13.8585499 C11.1993995,13.8585499 13.8585499,11.1993995 13.8585499,7.91917136 C13.8585499,4.63894318 11.1993995,1.97979284 7.91917136,1.97979284 C4.63894318,1.97979284 1.97979284,4.63894318 1.97979284,7.91917136 C1.97979284,11.1993995 4.63894318,13.8585499 7.91917136,13.8585499 Z"/>
+                </defs>
+                <g fill="none" fill-rule="evenodd" transform="translate(2 2)">
+                  <g transform="translate(1 2)">
+                    <mask id="search-b" fill="#ffffff">
+                      <use xlink:href="#search-a"/>
+                    </mask>
+                    <use fill="#D8D8D8" xlink:href="#search-a"/>
+                    <g fill="#FA2867" mask="url(#search-b)">
+                      <rect width="24" height="24" transform="translate(-3 -4)"/>
+                    </g>
+                  </g>
+                  <mask id="search-d" fill="#ffffff">
+                    <use xlink:href="#search-c"/>
+                  </mask>
+                  <use fill="#000000" fill-rule="nonzero" xlink:href="#search-c"/>
+                  <g fill="#2ACBDD" mask="url(#search-d)">
+                    <rect width="24" height="24" transform="translate(-2 -2)"/>
+                  </g>
+                </g>
+              </svg></button>
+             
+            
+           
+        </div>
+        </form>
+        <br>
+    
+    
+    
+    
+        <br>
+    
+    
+        <style>
+          .allmain{
+            display: flex;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        align-items: center;
+        margin: auto;
+        width: 100%;
+        padding: 8px;
+          }
+          /* #ai_response{
+            margin-left: 330px;
+            max-width: 768px;
+          }
+          #top_widget{
+            margin-left: 330px;
+            max-width: 768px;
+          }
+          .result{
+            margin-left: 330px;
+            max-width: 768px;
+          } */
+          @media (max-width: 768px) {
+            #ai_response{
+              margin-left: 30px;
+          }
+          #top_widget{
+            margin-left: 30px;
+          }
+         
+            .result{
+              margin-left: 30px;
+            }
+    
+          }
+          @media (max-width: 480px) {
+            #ai_response{
+              margin-left: 1px;
+          }
+          #top_widget{
+            margin-left: 1px;
+          }
+         
+            .result{
+                width: 280px;
+              margin-left: 1px;
+            }
+            .more{
+              margin-left: 120px;
+            }
+          }
+        </style>
+      <style>
+          #suggestions {
+        max-height: 150px;
+        overflow-y: auto;
+        position: absolute;
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+        color: #fff;
+        width: 510px;
+        margin-top: 100px;
+        border-radius: 20px;
+        transition: 1s;
+        margin-bottom: -50px;
+        
+    }
+    #suggestions::-webkit-scrollbar {
+               display: none;
+            }
+       @media (max-width: 480px) {
+        #suggestions {
+          margin-top: 100px;
+        margin-left: 1px;
+        }
+      }
+      </style>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+              const micButton = document.getElementById('mic-button');
+              const listeningOverlay = document.getElementById('listening-overlay');
+    
+              micButton.addEventListener('click', function() {
+                  listeningOverlay.style.display = 'flex'; // Show listening overlay
+    
+                  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+                  recognition.lang = 'en-US';
+                  recognition.start();
+    
+                  recognition.onresult = function(event) {
+                      const transcript = event.results[0][0].transcript;
+                      recognition.stop();
+                      searchWithVoice(transcript);
+                  };
+    
+                  recognition.onerror = function(event) {
+                      console.error(event.error);
+                      listeningOverlay.style.display = 'none'; // Hide listening overlay on error
+                  };
+              });
+          });
+    
+          function searchWithVoice(query) {
+              window.location.href = `https://exyser.vercel.app/search_q=${encodeURIComponent(query)}`;
+          }
+      </script>
+        <div id="suggestions"></div>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+              const searchInput = document.getElementById('search_query');
+              const suggestionsDiv = document.getElementById('suggestions');
+              const searchForm = document.getElementById('search-form');
+    
+              searchInput.addEventListener('input', function() {
+                  const query = searchInput.value;
+                  if (query) {
+                      fetch(`/suggestions?query=${query}`)
+                          .then(response => response.json())
+                          .then(data => {
+                              suggestionsDiv.innerHTML = '';
+                              data.forEach(suggestion => {
+                                  const suggestionItem = document.createElement('div');
+                                  suggestionItem.classList.add('suggestion-item');
+                                  suggestionItem.textContent = suggestion;
+                                  suggestionItem.addEventListener('click', function() {
+                                      window.open(`https://exyser.vercel.app/search_q=${encodeURIComponent(suggestion)}`, '_blank');
+                                  });
+                                  suggestionsDiv.appendChild(suggestionItem);
+                              });
+                          })
+                          .catch(error => console.error('Error fetching suggestions:', error));
+                  } else {
+                      suggestionsDiv.innerHTML = '';
+                  }
+              });
+    
+              searchForm.addEventListener('submit', function(event) {
+                  event.preventDefault();
+                  const action = searchForm.action || '/';
+                  fetch(action, {
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/x-www-form-urlencoded',
+                      },
+                      body: new URLSearchParams(new FormData(searchForm)),
+                  })
+                  .then(response => response.text())
+                  .then(html => {
+                      document.open();
+                      document.write(html);
+                      document.close();
+                  })
+                  .catch(error => console.error('Error submitting form:', error));
+              });
+          });
+      </script>
+       <div id="listening-overlay">
+        <i class="fas fa-microphone speak-icon" style="font-size: 1.5rem;"></i>
+    </div>
+     <div class="tab">
+        <div id="Links" class="tabcontent">
+            <!-- Button to navigate to videos page -->
+            <form action="/search_q={{search_query}}" method="post">
+                <input type="hidden" name="search_query" value="{{ search_query }}">
+                <button type="submit"><?xml version="1.0" encoding="utf-8"?>
+    
+    
+                
+    
+                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                    <svg width="25px" height="25px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <defs>
+                        <path id="search-a" d="M11.7099609,0.572509766 C9.46940104,1.29012044 7.99951172,3.05419922 7.30029297,5.86474609 C6.25146484,10.0805664 4.95166016,10.6181641 0.719970703,9.11865234 C2.23974609,11.9257813 5.32006836,13.0512695 7.30029297,13.0512695 C9.28051758,13.0512695 14.4091797,10.2941895 13.8215332,5.0534668 C13.3114421,3.52709961 12.6075846,2.03344727 11.7099609,0.572509766 Z"/>
+                        <path id="search-c" d="M14.1791377,12.7701494 L19.7100661,18.3101411 C20.0966446,18.6967197 20.0966446,19.3234875 19.7100661,19.7100661 C19.3234875,20.0966446 18.6967197,20.0966446 18.3101411,19.7100661 L12.7803471,14.1712106 C11.4385246,15.2160226 9.75152329,15.8383427 7.91917136,15.8383427 C3.54553379,15.8383427 0,12.2928089 0,7.91917136 C0,3.54553379 3.54553379,0 7.91917136,0 C12.2928089,0 15.8383427,3.54553379 15.8383427,7.91917136 C15.8383427,9.74688445 15.2191696,11.4299819 14.1791377,12.7701494 Z M7.91917136,13.8585499 C11.1993995,13.8585499 13.8585499,11.1993995 13.8585499,7.91917136 C13.8585499,4.63894318 11.1993995,1.97979284 7.91917136,1.97979284 C4.63894318,1.97979284 1.97979284,4.63894318 1.97979284,7.91917136 C1.97979284,11.1993995 4.63894318,13.8585499 7.91917136,13.8585499 Z"/>
+                      </defs>
+                      <g fill="none" fill-rule="evenodd" transform="translate(2 2)">
+                        <g transform="translate(1 2)">
+                          <mask id="search-b" fill="#ffffff">
+                            <use xlink:href="#search-a"/>
+                          </mask>
+                          <use fill="#D8D8D8" xlink:href="#search-a"/>
+                          <g fill="#FA2867" mask="url(#search-b)">
+                            <rect width="24" height="24" transform="translate(-3 -4)"/>
+                          </g>
+                        </g>
+                        <mask id="search-d" fill="#ffffff">
+                          <use xlink:href="#search-c"/>
+                        </mask>
+                        <use fill="#000000" fill-rule="nonzero" xlink:href="#search-c"/>
+                        <g fill="#2ACBDD" mask="url(#search-d)">
+                          <rect width="24" height="24" transform="translate(-2 -2)"/>
+                        </g>
+                      </g>
+                    </svg>All</button>
+            </form>
+        </div>
+        <div id="Images" class="tabcontent">
+          <!-- Button to navigate to videos page -->
+          <form action="/search_q={{search_query}}&type=images" method="post">
+              <input type="hidden" name="search_query" value="{{ search_query }}">
+              <button type="submit"> <svg width="25px" height="25px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs>
+                  <path id="image-a" d="M4,4 C2.8954305,4 2,3.1045695 2,2 C2,0.8954305 2.8954305,0 4,0 C5.1045695,0 6,0.8954305 6,2 C6,3.1045695 5.1045695,4 4,4 Z M0.497558594,15 L4.07592773,10.7578125 L6.02026367,12.2731934 L13.4494629,2.51928711 L16,5.45703125 L16,15 L0.497558594,15 Z"/>
+                  <path id="image-c" d="M18,6.97348874 L18,2 L2,2 L2,15.5476712 L6.04883416,10.4166727 C6.41808601,9.94872797 7.11213264,9.90569713 7.53635945,10.3244463 L9.54496213,12.3071135 L14.8746293,5.31817463 C15.2514017,4.82410259 15.9827874,4.78961411 16.4043805,5.24603924 L18,6.97348874 Z M18,9.92107486 L15.7430352,7.47763974 L10.4462935,14.4234025 C10.0808144,14.9026653 9.37757149,14.9521101 8.9486259,14.5287032 L6.92665827,12.5328435 L2.61256422,18 L18,18 L18,9.92107486 Z M2,0 L18,0 C19.1045695,0 20,0.8954305 20,2 L20,18 C20,19.1045695 19.1045695,20 18,20 L2,20 C0.8954305,20 0,19.1045695 0,18 L0,2 C0,0.8954305 0.8954305,0 2,0 Z M7,9 C5.34314575,9 4,7.65685425 4,6 C4,4.34314575 5.34314575,3 7,3 C8.65685425,3 10,4.34314575 10,6 C10,7.65685425 8.65685425,9 7,9 Z M7,7 C7.55228475,7 8,6.55228475 8,6 C8,5.44771525 7.55228475,5 7,5 C6.44771525,5 6,5.44771525 6,6 C6,6.55228475 6.44771525,7 7,7 Z"/>
+                </defs>
+                <g fill="none" fill-rule="evenodd" transform="translate(2 2)">
+                  <g transform="translate(3 4)">
+                    <mask id="image-b" fill="#ffffff">
+                      <use xlink:href="#image-a"/>
+                    </mask>
+                    <use fill="#D8D8D8" xlink:href="#image-a"/>
+                    <g fill="#FF9550" mask="url(#image-b)">
+                      <rect width="24" height="24" transform="translate(-5 -6)"/>
+                    </g>
+                  </g>
+                  <mask id="image-d" fill="#ffffff">
+                    <use xlink:href="#image-c"/>
+                  </mask>
+                  <use fill="#000000" fill-rule="nonzero" xlink:href="#image-c"/>
+                  <g fill="#FA2867" mask="url(#image-d)">
+                    <rect width="24" height="24" transform="translate(-2 -2)"/>
+                  </g>
+                </g>
+              </svg>Images</button>
+          </form>
+      </div>
+    
+      <style>
+    /* Default styles for the buttons */
+    #Links button, #Images button, #Videos button, #News button, #Maps button, #Files button {
+      border: none;
+      padding: 3px 13px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+    
+    /* Trigger the color-changing animation only on hover */
+    #Links button:hover, #Images button:hover, #Videos button:hover, #News button:hover, #Maps button:hover, #Files button:hover {
+      background-color: #40E0D0;
+    }
+    
+    
+    
+    
+      </style>
+      <!-- <form action="/search_q={{ search_query }}&type=videos" method="get">
+        <button type="submit">View Videos</button>
+    </form> -->
+      <div id="Videos" class="tabcontent">
+          <!-- Button to navigate to videos page -->
+          <form action="/search_q={{ search_query }}&type=videos" method="get">
+              <input type="hidden" name="search_query" value="{{ search_query }}">
+              <button type="submit">  <svg width="25px" height="25px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs>
+                  <rect id="video-camera-a" width="13" height="2"/>
+                  <path id="video-camera-c" d="M2,2 L2,12 L15,12 L15,2 L2,2 Z M17,4.0954626 L20.5133571,2.12178132 C21.1834064,1.76317778 22,2.23954815 22,2.98903356 L22,11.0109664 C22,11.7604518 21.1834064,12.2368222 20.5133571,11.8782187 L17,9.91175081 L17,12 C17,13.1045695 16.1045695,14 15,14 L2,14 C0.8954305,14 0,13.1045695 0,12 L0,2 C0,0.8954305 0.8954305,0 2,0 L15,0 C16.1045695,0 17,0.8954305 17,2 L17,4.0954626 Z M19.9558105,9.43862799 L19.9558105,4.68369936 L16,7.06116368 L19.9558105,9.43862799 Z M13,5.5 C12.1715729,5.5 11.5,4.82842712 11.5,4 C11.5,3.17157288 12.1715729,2.5 13,2.5 C13.8284271,2.5 14.5,3.17157288 14.5,4 C14.5,4.82842712 13.8284271,5.5 13,5.5 Z M2,10 L2,8 L15,8 L15,10 L2,10 Z"/>
+                </defs>
+                <g fill="none" fill-rule="evenodd" transform="translate(1 5)">
+                  <g transform="translate(2 10)">
+                    <mask id="video-camera-b" fill="#ffffff">
+                      <use xlink:href="#video-camera-a"/>
+                    </mask>
+                    <use fill="#D8D8D8" xlink:href="#video-camera-a"/>
+                    <g fill="#A60C69" mask="url(#video-camera-b)">
+                      <rect width="24" height="24" transform="translate(-3 -15)"/>
+                    </g>
+                  </g>
+                  <mask id="video-camera-d" fill="#ffffff">
+                    <use xlink:href="#video-camera-c"/>
+                  </mask>
+                  <use fill="#000000" fill-rule="nonzero" xlink:href="#video-camera-c"/>
+                  <g fill="#FA2867" mask="url(#video-camera-d)">
+                    <rect width="24" height="24" transform="translate(-1 -5)"/>
+                  </g>
+                </g>
+              </svg>Videos</button>
+          </form>
+         </div>
+    
+      <div id="News" class="tabcontent">
+          <!-- Button to navigate to videos page -->
+          <form action="/search_q={{search_query}}&type=news" method="post">
+              <input type="hidden" name="search_query" value="{{ search_query }}">
+              <button type="submit"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve" width="25px" height="25px">
+             <path fill="none" stroke="#FA2867" stroke-width="2" stroke-miterlimit="10" d="M25,26H7c-1.7,0-3-1.3-3-3V6h18v7"/>
+             <path fill="none" stroke="#FA2867" stroke-width="2" stroke-miterlimit="10" d="M25,26L25,26c-1.7,0-3-1.3-3-3V13h6v10
+               C28,24.7,26.7,26,25,26z"/>
+             <rect x="8" y="10" fill="none" stroke="#0C1D6B" stroke-width="2" stroke-miterlimit="10" width="10" height="3"/>
+             <line fill="none" stroke="#0C1D6B" stroke-width="2" stroke-miterlimit="10" x1="7" y1="16" x2="12" y2="16"/>
+             <line fill="none" stroke="#0C1D6B" stroke-width="2" stroke-miterlimit="10" x1="14" y1="16" x2="19" y2="16"/>
+             <line fill="none" stroke="#0C1D6B" stroke-width="2" stroke-miterlimit="10" x1="7" y1="19" x2="12" y2="19"/>
+             <line fill="none" stroke="#0C1D6B" stroke-width="2" stroke-miterlimit="10" x1="14" y1="19" x2="19" y2="19"/>
+             <line fill="none" stroke="#0C1D6B" stroke-width="2" stroke-miterlimit="10" x1="7" y1="22" x2="12" y2="22"/>
+             <line fill="none" stroke="#0C1D6B" stroke-width="2" stroke-miterlimit="10" x1="14" y1="22" x2="19" y2="22"/>
+             </svg>News</button>
+          </form>
+      </div>
+      <form action="/search_q={{ search_query }}&type=maps" method="get" id="Maps">
+        <button type="submit"><?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+          <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 9.42999V7C21 5.93913 20.5786 4.92172 19.8284 4.17157C19.0783 3.42142 18.0609 3 17 3H7C5.93913 3 4.92178 3.42142 4.17163 4.17157C3.42149 4.92172 3 5.93913 3 7V17C3 18.0609 3.42149 19.0783 4.17163 19.8284C4.92178 20.5786 5.93913 21 7 21H12.46" stroke="#FA2867" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14.4003 10.2201L3.82031 4.57007" stroke="#2ACBDD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4.5258 20.18L10.9001 8.34998" stroke="#2ACBDD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18.5 12C17.9087 11.9987 17.3229 12.1142 16.7764 12.3399C16.2298 12.5655 15.7333 12.8969 15.3151 13.3151C14.897 13.7332 14.5656 14.2298 14.3399 14.7764C14.1142 15.3229 13.9987 15.9087 14 16.5C14 19.5 17.38 22 18.5 22C19.62 22 23 19.55 23 16.5C23 15.3065 22.5259 14.1619 21.682 13.318C20.8381 12.4741 19.6935 12 18.5 12V12Z" stroke="#2ACBDD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18.5 16.9999C18.3677 16.9994 18.2369 16.9726 18.115 16.9211C17.9931 16.8696 17.8827 16.7944 17.7901 16.7C17.6053 16.5137 17.5011 16.2623 17.5 15.9999C17.4993 15.8683 17.5245 15.7379 17.5743 15.616C17.6241 15.4942 17.6974 15.3834 17.7901 15.2899C17.883 15.1962 17.9936 15.1218 18.1155 15.071C18.2374 15.0203 18.368 14.9941 18.5 14.9941C18.632 14.9941 18.7627 15.0203 18.8846 15.071C19.0065 15.1218 19.1171 15.1962 19.21 15.2899C19.3027 15.3834 19.376 15.4942 19.4258 15.616C19.4756 15.7379 19.5008 15.8683 19.5 15.9999C19.4989 16.2623 19.3948 16.5137 19.21 16.7C19.1174 16.7944 19.007 16.8696 18.8851 16.9211C18.7632 16.9726 18.6323 16.9994 18.5 16.9999Z" fill="#2ACBDD"/>
+            </svg>Maps</button>
+      </form>
+        <!-- <form action="/search_files" method="post" id="Files">
+            <input type="hidden" name="search_query" value="{{ search_query }}">
+            <button type="submit" name="file_search" value="search_files"> <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+             
+                <svg height="25px" width="25px" version="1.1" id="_x35_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                   viewBox="0 0 512 512"  xml:space="preserve">
+                <g>
+                  <g>
+                    <path style="fill:#F92B65;" d="M431.942,88.352v291.165c0,2.162-0.289,4.184-0.794,6.202c-0.072,0-0.072,0.072-0.072,0.144
+                      c-1.009,3.823-2.957,7.357-5.698,10.241c-4.255,4.833-10.458,8.007-17.382,8.223h-0.072c-0.289,0.072-0.577,0.072-0.866,0.072
+                      H26.246c-3.967,0-7.645-0.938-10.963-2.597c-4.904-2.451-8.871-6.418-11.324-11.322c-1.154-2.308-1.947-4.833-2.308-7.501
+                      c-0.216-1.155-0.288-2.309-0.288-3.462V88.352c0-13.703,11.251-24.955,24.883-24.955h380.814
+                      C420.691,63.397,431.942,74.649,431.942,88.352z"/>
+                    <path style="fill:#F92B65;" d="M431.942,88.352v291.165c0,2.162-0.289,4.184-0.794,6.202c-0.072,0-0.072,0.072-0.072,0.144
+                      c-1.009,3.823-2.957,7.357-5.698,10.241c-4.255,4.833-10.458,8.007-17.382,8.223h-0.072c-0.289,0.072-0.577,0.072-0.866,0.072
+                      H26.246c-3.967,0-7.645-0.938-10.963-2.597c-4.904-2.451-8.871-6.418-11.324-11.322c-1.154-2.308-1.947-4.833-2.308-7.501
+                      c-0.216-1.155-0.288-2.309-0.288-3.462V88.352c0-13.703,11.251-24.955,24.883-24.955h380.814
+                      C420.691,63.397,431.942,74.649,431.942,88.352z"/>
+                    <path style="fill:#F92B65;" d="M216.508,141.796H33.458c-3.39,0-6.563-0.433-9.665-1.227c-12.91-3.101-22.43-12.549-22.43-23.657
+                      V24.884C1.363,11.179,15.86,0,33.458,0h99.459l37.36,63.397l13.271,22.43l12.549,21.35L216.508,141.796z"/>
+                    <path style="fill:#FFFFFF;" d="M26.266,381.982c-1.327,0-2.489-1.162-2.489-2.489V88.318c0-1.327,1.162-2.489,2.489-2.489h380.767
+                      c1.327,0,2.489,1.162,2.489,2.489v291.175c0,1.327-1.162,2.489-2.489,2.489H26.266z"/>
+                    <path style="fill:#F92B65;" d="M510.629,128.814c0.072,0.072,0,0.072,0,0.144l-2.02,6.635l-10.314,33.394l-11.035,35.701
+                      l-10.314,33.32l-11.035,35.703l-10.241,33.392l-23.801,76.883c-0.217,0.578-0.505,1.153-0.722,1.731
+                      c-0.072,0-0.072,0.072-0.072,0.144c-0.072,0.072-0.144,0.144-0.144,0.144c0,0.072-0.072,0.217-0.144,0.289
+                      c-4.039,8.149-12.982,15.073-22.503,17.959c-0.144,0-0.216,0.072-0.288,0.072h-0.072c-3.174,0.937-6.275,1.442-9.376,1.442H17.807
+                      c-12.549,0-19.834-8.221-17.309-18.751c0.144-1.011,0.505-2.02,0.865-3.03l0.288-1.009l22.142-71.62l52.362-169.561l3.967-12.838
+                      c4.616-11.974,19.618-21.782,33.321-21.782h380.741C507.816,107.177,515.245,116.912,510.629,128.814z"/>
+                    <polygon style="opacity:0.5;fill:#E0C8E1;" points="465.94,273.725 455.637,307.098 301.265,307.098 301.265,273.725 		"/>
+                    <polygon style="opacity:0.5;fill:#E0C8E1;" points="487.268,204.664 476.965,238.037 324.783,238.037 324.783,204.664 		"/>
+                  </g>
+                  <path style="opacity:0.06;fill:#040000;" d="M510.629,128.814c0.072,0.072,0,0.072,0,0.144l-2.02,6.635l-10.314,33.394
+                    l-11.035,35.701l-10.314,33.32l-11.035,35.703l-10.241,33.392l-23.801,76.883c-0.217,0.578-0.505,1.153-0.722,1.731
+                    c-0.072,0-0.072,0.072-0.072,0.144c-0.072,0.072-0.144,0.144-0.144,0.144c0,0.072-0.072,0.217-0.144,0.289
+                    c-1.01,3.678-2.885,7.068-5.409,9.808c-4.255,4.761-10.314,7.79-17.093,8.151c-0.144,0-0.216,0.072-0.288,0.072h-0.072
+                    c-3.174,0.937-6.275,1.442-9.376,1.442H53.076l1.37-1.37l22.43-22.431l274.792-274.791l21.348-21.35l22.431-22.43h11.612
+                    c13.632,0,24.883,11.252,24.883,24.955v18.825h62.242C507.816,107.177,515.245,116.912,510.629,128.814z"/>
+                </g>
+                </svg>Files</button>
+        </form> -->
+    </div>
+    </div>
+    </div>
+</body>
+</html>

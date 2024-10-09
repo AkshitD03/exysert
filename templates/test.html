@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Search App</title>
+    <style>
+        #listening-popup {
+            position: fixed;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+
+        .speak-icon {
+            margin-bottom: 10px;
+            font-size: 3rem;
+        }
+
+        #mic-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button id="mic-button">Start Listening</button>
+    <div id="listening-popup">
+        <i class="fas fa-microphone speak-icon"></i>
+        <p>Listening</p>
+    </div>
+    <script>
+        document.getElementById('mic-button').addEventListener('click', () => {
+            // Check if the Web Speech API is supported
+            if (!('webkitSpeechRecognition' in window)) {
+                alert('Sorry, your browser does not support the Web Speech API');
+                return;
+            }
+
+            // Create a new SpeechRecognition object
+            const recognition = new webkitSpeechRecognition();
+            recognition.lang = 'en-US';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            // Show the popup
+            document.getElementById('listening-popup').style.display = 'block';
+
+            // Start the speech recognition
+            recognition.start();
+
+            recognition.onresult = (event) => {
+                const query = event.results[0][0].transcript;
+                console.log('Query:', query);
+                // Hide the popup
+                document.getElementById('listening-popup').style.display = 'none';
+                // Perform a Google search
+                window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
+            };
+
+            recognition.onerror = (event) => {
+                console.error('Speech recognition error:', event.error);
+                // Hide the popup
+                document.getElementById('listening-popup').style.display = 'none';
+            };
+
+            recognition.onend = () => {
+                // Hide the popup when the recognition ends
+                document.getElementById('listening-popup').style.display = 'none';
+            };
+        });
+    </script>
+</body>
+</html>

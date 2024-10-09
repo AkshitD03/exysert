@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exyser Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_light.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_dark.css') }}">
+    <!-- Include jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Include custom JavaScript for theme switching -->
+    <meta name="google-site-verification" content="NwbHrAmZSgAzqdQd_8TDu_YndSQ-5W_DhUVE7Ld69TQ" />
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+  <style>
+    @media (max-width: 480px) {
+    #suggestions {
+        width: 100%;
+        margin-top: 430px;
+    }
+}
+@media (max-width: 480px) {
+    .popup {
+        width: 350px;
+        margin-top: -500px;
+        margin-left: -200px;
+    }
+}
+  </style>
+    <div class="logo">
+        <img src="{{ url_for('static', filename='app.png') }}" />
+    </div>
+    <form action="/" method="post"  id="search-form">
+        <!-- <label for="search_query">Enter Your Query:</label>
+        <input type="text" id="search_query" name="search_query">
+        <button type="submit">Search</button>
+        <button type="button" id="mic-button">🎤</button> -->
+        
+       
+        <div class="search-bar">
+            <input type="text" placeholder="Search EXYSER..." id="search_query" name="search_query">
+            <div class="buttons-container">
+                <button class="search-button" type="submit" id="search-button"><?xml version="1.0" encoding="utf-8"?>
+    
+                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                    <svg width="25px" height="25px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <defs>
+                        <path id="search-a" d="M11.7099609,0.572509766 C9.46940104,1.29012044 7.99951172,3.05419922 7.30029297,5.86474609 C6.25146484,10.0805664 4.95166016,10.6181641 0.719970703,9.11865234 C2.23974609,11.9257813 5.32006836,13.0512695 7.30029297,13.0512695 C9.28051758,13.0512695 14.4091797,10.2941895 13.8215332,5.0534668 C13.3114421,3.52709961 12.6075846,2.03344727 11.7099609,0.572509766 Z"/>
+                        <path id="search-c" d="M14.1791377,12.7701494 L19.7100661,18.3101411 C20.0966446,18.6967197 20.0966446,19.3234875 19.7100661,19.7100661 C19.3234875,20.0966446 18.6967197,20.0966446 18.3101411,19.7100661 L12.7803471,14.1712106 C11.4385246,15.2160226 9.75152329,15.8383427 7.91917136,15.8383427 C3.54553379,15.8383427 0,12.2928089 0,7.91917136 C0,3.54553379 3.54553379,0 7.91917136,0 C12.2928089,0 15.8383427,3.54553379 15.8383427,7.91917136 C15.8383427,9.74688445 15.2191696,11.4299819 14.1791377,12.7701494 Z M7.91917136,13.8585499 C11.1993995,13.8585499 13.8585499,11.1993995 13.8585499,7.91917136 C13.8585499,4.63894318 11.1993995,1.97979284 7.91917136,1.97979284 C4.63894318,1.97979284 1.97979284,4.63894318 1.97979284,7.91917136 C1.97979284,11.1993995 4.63894318,13.8585499 7.91917136,13.8585499 Z"/>
+                      </defs>
+                      <g fill="none" fill-rule="evenodd" transform="translate(2 2)">
+                        <g transform="translate(1 2)">
+                          <mask id="search-b" fill="#ffffff">
+                            <use xlink:href="#search-a"/>
+                          </mask>
+                          <use fill="#D8D8D8" xlink:href="#search-a"/>
+                          <g fill="#FA2867" mask="url(#search-b)">
+                            <rect width="24" height="24" transform="translate(-3 -4)"/>
+                          </g>
+                        </g>
+                        <mask id="search-d" fill="#ffffff">
+                          <use xlink:href="#search-c"/>
+                        </mask>
+                        <use fill="#000000" fill-rule="nonzero" xlink:href="#search-c"/>
+                        <g fill="#2ACBDD" mask="url(#search-d)">
+                          <rect width="24" height="24" transform="translate(-2 -2)"/>
+                        </g>
+                      </g>
+                    </svg></button>
+                <!-- <button class="speak-button"  type="button" id="mic-button"><i class="fas fa-microphone speak-icon"></i> </button> -->
+            </div>
+            <div class="clear-button">
+                <svg class="ionicon" viewBox="0 0 512 512" aria-hidden="true">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368"/>
+                </svg>
+            </div>
+        </div>
+    </form>
+
+
+
+
+
+
+    
+    <div class="popup">
+        <div class="popup-header">
+            <h2>SETTINGS</h2>
+            <span class="close-button">&times;</span>
+            <!-- <button class="close-popup-button">x</button> -->
+        </div>
+        <div class="popup-content">
+            <p>Choose you prefered settings from here.</p>
+            <label for="toggle-suggestions">Toggle Suggestions</label>
+            <input type="checkbox" id="toggle-suggestions" checked>
+            <br>
+            <br>
+            <button id="clear-history-button">Clear Suggestion History</button>
+            <br>
+            <br>
+            <button id="theme-toggle">Toggle Theme</button>
+        </div>
+    </div>
+
+
+
+    <div id="suggestions" class="suggestions"></div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('search_query');
+            const suggestionsDiv = document.getElementById('suggestions');
+            const clearHistoryButton = document.getElementById('clear-history-button');
+            const toggleSuggestionsCheckbox = document.getElementById('toggle-suggestions');
+
+            // Load the toggle state from sessionStorage
+            const suggestionsEnabled = sessionStorage.getItem('suggestionsEnabled') !== 'false';
+            toggleSuggestionsCheckbox.checked = suggestionsEnabled;
+
+            toggleSuggestionsCheckbox.addEventListener('change', function() {
+                const enabled = toggleSuggestionsCheckbox.checked;
+                sessionStorage.setItem('suggestionsEnabled', enabled);
+                fetch('/toggle_suggestions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ enabled })
+                });
+            });
+
+            searchInput.addEventListener('input', function() {
+                if (!toggleSuggestionsCheckbox.checked) {
+                    suggestionsDiv.innerHTML = '';
+                    return;
+                }
+
+                const query = searchInput.value;
+                if (query) {
+                    fetch(`/suggestions?query=${query}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            suggestionsDiv.innerHTML = '';
+                            data.forEach(suggestion => {
+                                const suggestionItem = document.createElement('div');
+                                suggestionItem.classList.add('suggestion-item');
+
+                                // Check if the suggestion is previously selected
+                                if (sessionStorage.getItem(suggestion)) {
+                                    const svgIcon = document.createElement('div');
+                                    svgIcon.innerHTML = `<?xml version="1.0" ?><svg height="24" viewBox="0 0 48 48" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h48v48h-48z" fill="none"/><path d="M25.99 6c-9.95 0-17.99 8.06-17.99 18h-6l7.79 7.79.14.29 8.07-8.08h-6c0-7.73 6.27-14 14-14s14 6.27 14 14-6.27 14-14 14c-3.87 0-7.36-1.58-9.89-4.11l-2.83 2.83c3.25 3.26 7.74 5.28 12.71 5.28 9.95 0 18.01-8.06 18.01-18s-8.06-18-18.01-18zm-1.99 10v10l8.56 5.08 1.44-2.43-7-4.15v-8.5h-3z" opacity=".9"/></svg>`;
+                                    svgIcon.classList.add('svg-icon');
+                                    suggestionItem.appendChild(svgIcon);
+                                }
+
+                                suggestionItem.appendChild(document.createTextNode(suggestion));
+                                suggestionItem.addEventListener('click', function() {
+                                    searchInput.value = suggestion;
+                                    sessionStorage.setItem(suggestion, 'selected'); // Store in sessionStorage
+                                    window.location.href = `/search_q=${encodeURIComponent(suggestion)}`;
+                                });
+                                suggestionsDiv.appendChild(suggestionItem);
+                            });
+                        })
+                        .catch(error => console.error('Error fetching suggestions:', error));
+                } else {
+                    suggestionsDiv.innerHTML = '';
+                }
+            });
+
+            clearHistoryButton.addEventListener('click', function() {
+                sessionStorage.clear(); // Clear client-side history
+                fetch('/clear_history', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        suggestionsDiv.innerHTML = '';
+                        alert('Suggestion history cleared.');
+                    }
+                })
+                .catch(error => console.error('Error clearing history:', error));
+            });
+        });
+    </script>
+  
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const openPopupButton = document.querySelector('.settings-btn');
+        const popup = document.querySelector('.popup');
+        const closeButton = document.querySelector('.close-button');
+        const closePopupButton = document.querySelector('.close-popup-button');
+        const overlay = document.querySelector('.overlay');
+
+        function openPopup() {
+            popup.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        function closePopup() {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+
+        openPopupButton.addEventListener('click', openPopup);
+        closeButton.addEventListener('click', closePopup);
+        closePopupButton.addEventListener('click', closePopup);
+        overlay.addEventListener('click', closePopup);
+    });
+</script>
+ 
+ <div id="listening-popup">
+    <i class="fas fa-microphone speak-icon" style="font-size: 3rem;"></i>
+    <p id="spoken-text"></p>
+</div>
+
+<script>
+    document.getElementById('mic-button').addEventListener('click', function() {
+        const popup = document.getElementById('listening-popup');
+        popup.style.display = 'flex'; // Changed from block to flex for centering
+
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'en-US';
+        recognition.start();
+
+        recognition.onresult = function(event) {
+            const transcript = event.results[0][0].transcript;
+            document.getElementById('spoken-text').innerText = transcript;
+            searchWithVoice(transcript);
+        };
+
+        recognition.onspeechend = function() {
+            recognition.stop();
+            popup.style.display = 'none';
+        };z
+
+        recognition.onerror = function(event) {
+            console.error(event.error);
+            popup.style.display = 'none';
+        };
+
+        recognition.onaudiostart = function() {
+            const listeningText = document.getElementById('listening-text');
+            if (listeningText) {
+                listeningText.innerText = 'Listening...'; // Reset the listening text
+            }
+        };
+
+        recognition.onnomatch = function() {
+            const listeningText = document.getElementById('listening-text');
+            if (listeningText) {
+                listeningText.innerText = 'No speech recognized'; // Display message if no speech is recognized
+            }
+        };
+    });
+
+    function searchWithVoice(query) {
+        const form = document.getElementById('search-form');
+        form.action = `/search_q=${encodeURIComponent(query)}`;
+        form.submit();
+    }
+</script>
+
+<div class="footer">
+    <div class="foot-cont">
+    <!-- <p>Made With Love ❤️ in India</p> -->
+    <div class="type-writter">
+        <p class="fixed-text">WE CARE OF </p>
+        <p class="typewriter-text" id="typewriter"></p>
+</div>
+</div>
+</div>
+<style>
+    #suggestions{
+        margin-top: 500px;
+    }
+    @media (max-width: 768px) {
+        #suggestions {
+        width: 90%; /* Adjusted width for responsiveness */
+        margin-top: 500px;
+    }
+    }
+    @media (max-width: 480px) {
+    #suggestions {
+        width: 100%;
+        margin-top: 430px;
+    }
+}
+</style>
+<style>
+    .type-writter{
+        display: flex;
+        flex-direction: row;
+        gap: 7px;
+        font-size: 1.2rem;
+    }
+
+    .typewriter-text{
+        color: #F92B65;
+    }
+    .foot-cont{
+        margin-left: 650px;
+    }
+    
+    @media (max-width: 768px) {
+        .foot-cont{
+            margin-left: 530px;
+        }
+    }
+    @media (max-width: 480px) {
+        .foot-cont{
+            margin-left: 540px;
+        }
+    }
+</style>
+<script>
+    const textArray = [" 🔏 your privacy", " ⌚your time", "❤️ your love", "YOU 💕"];
+let textIndex = 0;
+let charIndex = 0;
+const typingSpeed = 100;
+const erasingSpeed = 50;
+const newTextDelay = 2000;
+const typewriterElement = document.getElementById('typewriter');
+
+function type() {
+    if (charIndex < textArray[textIndex].length) {
+        typewriterElement.textContent += textArray[textIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, typingSpeed);
+    } else {
+        setTimeout(erase, newTextDelay);
+    }
+}
+
+function erase() {
+    if (charIndex > 0) {
+        typewriterElement.textContent = textArray[textIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, erasingSpeed);
+    } else {
+        textIndex = (textIndex + 1) % textArray.length;
+        setTimeout(type, typingSpeed);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(type, newTextDelay);
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+    <button class="menu-btn" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()"><div class="colse-cont" style="margin-left: -7px;">X</div></button>
+        <div class="cont-side">
+        <button class="settings-btn"><i class="fa-solid fa-gear"></i>       SETTINGS</button>
+        <br>
+
+        <a href="{{ url_for('about') }}" style="text-decoration: none;"><button class="about"><i class="fa-solid fa-info"></i>         ABOUT</button></a>
+        <br>
+
+        <a href="https://forms.gle/jxveEfB2SPocehkTA" style="text-decoration: none;"><button class="feedback"><i class="fa-solid fa-comments"></i>       FEEDBACK</button></a>
+    </div>
+    </div>
+</div>
+
+<script>
+    function toggleSidebar() {
+        document.getElementById('sidebar').classList.toggle('active');
+    }
+</script>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+.cont-side{
+ margin-top: 50px;   
+ text-decoration: none;
+}
+.container {
+    position: relative;
+}
+
+.menu-btn {
+    padding: 10px 20px;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    border-radius: 5px;
+}
+
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    margin-left: 768px;
+    background: rgb(38 38 38 / 60%);
+    backdrop-filter: blur(-10px);
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+    padding-top: 20px;
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+.sidebar-btn, .close-btn, .settings-btn, .feedback, .about  {
+    display: block;
+    padding: 10px 20px;
+    width: 100%;
+    text-align: left;
+    /* background-color: #282c34; */
+    background: none;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    gap: 5px;
+    text-decoration: none;
+}
+
+.sidebar-btn:hover, .close-btn:hover, .settings-btn:hover, .feedback:hover, .about:hover, .menu-btn:hover{
+    background: #F92B65;
+}
+
+.close-btn {
+    font-size: 24px;
+    text-align: right;
+    border-bottom: none;
+    cursor: pointer;
+    width: 10px;
+    margin-top: -10px;
+    margin-left: 180px;
+}
+@media (max-width: 768px) {
+.sidebar.active {
+    right: 300px;
+}
+.menu-btn{
+    margin-right: 397px;
+}
+}
+@media (max-width: 480px) {
+.sidebar.active {
+    right: 600px;
+}
+.menu-btn{
+     margin-right: 597px;
+    }
+}
+</style>
+
+
+
+</body>
+</html>
